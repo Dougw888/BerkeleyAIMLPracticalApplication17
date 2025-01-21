@@ -2,8 +2,8 @@
 Git Repository for Berkeley AI and ML Professional Certificate Practical Application #3 for module 17 <br>
 
 ### Description of Files in the Repo:<br>
--'[data.csv]()': this file contains the dataset used for this project<br>
--'[prompt_III.ipynb](https://github.com/Dougw888/)': this file contains the code for this project
+-'[bank-additional-full.csv](https://github.com/Dougw888/BerkeleyAIMLPracticalApplication17/blob/main/data/bank-additional-full.csv)': this file contains the dataset used for this project<br>
+-'[prompt_III.ipynb](https://github.com/Dougw888/BerkeleyAIMLPracticalApplication17/blob/main/prompt_III.ipynb)': this file contains the code for this project
 
 ### Description of the project:<br>
 This project asked a answer to the question: can we predict which customers will accept the bank interest rate deposit offer?<br>
