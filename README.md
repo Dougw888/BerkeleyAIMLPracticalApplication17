@@ -1,2 +1,20 @@
 # BerkeleyAIMLPracticalApplication17
-Git Repository for Berkeley AIML Professional Certificate Practical Application #3 for week 17
+Git Repository for Berkeley AI and ML Professional Certificate Practical Application #3 for module 17 <br>
+
+### Description of Files in the Repo:<br>
+-'[data.csv]()': this file contains the dataset used for this project<br>
+-'[prompt_III.ipynb](https://github.com/Dougw888/)': this file contains the code for this project
+
+### Description of the project:<br>
+This project asked a answer to the question: can we predict which customers will accept the bank interest rate deposit offer?<br>
+"In this third practical application assignment, your goal is to compare the performance of the classifiers (k-nearest neighbors, logistic regression, decision trees, and support vector machines) you encountered in this section of the program. You will use a dataset related to the marketing of bank products over the telephone."<br>
+
+### Overview of steps taken<br>
+Following the CRISP-DM framework, the following actions were taken to answer the question:<br>
+-Business objectives: What are the key factors that determine whether a customer will accept the bank deposit interest rate offer? <br>
+-Data Understanding: 41K rows of data, containing 21 fields which were a mix of categorical, ordinal (treated as categorical), and numeric. Categorical variables included occupation, marital status, loan status, previous campaign results, etc. Numeric included age, consumer price index, days since last contact. Ordinal variables included month, day of the week, education, etc. <br>
+-Data Preparation: To prepare the data, unnecessary columns were dropped (e.g., default, days since last contact). Default was dropped due to a very imbalanced dataset, and days since last contact due to a high number of placeholder values that specified the customer hadn't been contacted previously. This feature was converted to a categorical yes or no value (yes has been contacted in a previous campaign for all values != 999). Once columns were dropped, all 'unknown' data were dropped, reducing data set to 38K outreach efforts. After that, categorical data was OneHot Encoded, numerical data was scaled, and the target variable 'y' (whether or not the customer had accepted the offer) was label encoded to 1 or 0.<br>
+-Modeling: Across all models, accuracy was chosen as the main success metric for the model. Baseline accuracy was determined using a logistic regression on only the 'duration' feature compared to acceptance rate. The accuracy of this baseline model was 89%. After that, 'duration' was dropped from the data set as it is not a predictive variable (duration comes from the call in which the customer could accept the offer) and the remaining variables were all included in four default hyperparameter models comparing logistic regression, K-nearest neighbors (KNN), decision tree, and support vector machine (SVM). <br>
+-Evaluation: In the default forms of each model, SVM and logistic regression scored the highest accuracy at 91% (higher than baseline) with SVM being much more computationally demanding. Decision tree was the only model that had lower accuracy than the baseline model, which makes sense due to over fitting (training accuracy of 1.00 and no maximum depth). 
+-Modeling, revisted: GridSearch was done to find the best hyperparameters for each model time. This had very little impact on the accuracy of all models except decision trees, where reducing the max depth decreased overfitting and improved model accuracy to be on par with SVM and logistic regression (which didn't change hyperparameters from default). All models were now showing the same accuracy of 90-91% with KNN as the lowest performing and SVM marginally the highest.<br>
+-Deployment: In order to pick the best model, recall was also determined because in this case it's more important to catch the false negatives than the false positives since the cost of missing a true positive is more expensive (missed offer acceptance) than hitting a true negative you thought would be positive (one phone call that ends in no acceptance). Decision Tree performed the highest recall test score at 0.56 and so should be used as the marketing prioritization model going forward. Model accuracy and performance should be assessed quarterly and redeployed.<br>
